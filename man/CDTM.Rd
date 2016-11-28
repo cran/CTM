@@ -4,12 +4,17 @@
 \alias{CDTM}
 \title{Document Term Matrix}
 \usage{
-CDTM(doc, weighting, shortTermDeleted)
+CDTM(doc, weighting, EngTermDeleted = TRUE, NumTermDeleted = TRUE,
+  shortTermDeleted = TRUE)
 }
 \arguments{
-\item{doc}{The Chinese text document.}
+\item{doc}{The Chinese text document. A vector of Chinese strings.}
 
-\item{weighting}{Available weighting function with matrix are tf, tfidf.}
+\item{weighting}{Available weighting function with matrix are binary, count, tf, tfidf. See details.}
+
+\item{EngTermDeleted}{remove English from text documents.}
+
+\item{NumTermDeleted}{remove Numbers from text documents.}
 
 \item{shortTermDeleted}{Deltected short word when nchar <2.}
 }
@@ -17,20 +22,21 @@ CDTM(doc, weighting, shortTermDeleted)
 Constructs Document-Term Matrix from Chinese Text Documents.
 }
 \details{
-This function run a Chinese word segmentation by jiebeR and build document-term matrix
-and there is two weighting function with matrix,
-term frequency and term frequency inverse document frequency.
+This function run a Chinese word segmentation by jiebeR and build
+document-term matrix, and there is four weighting function with matrix, and
+"binary" means value can only be 1 if the term occurs, "count" means how many times the term occurs in a doc,
+ "tf" means term frequency and "tfidf" means term frequency inverse document frequency.
 }
 \examples{
 library(CTM)
-a <- "hello taiwan"
-b <- "world of tank"
-c <- "taiwan weather"
-d <- "local weather"
-text <- t(data.frame(a,b,c,d))
-dtm <- CDTM(doc = text, weighting = "tfidf", shortTermDeleted = FALSE)
+a1 <- "hello taiwan"
+b1 <- "world of tank"
+c1 <- "taiwan weather"
+d1 <- "local weather"
+text1 <- t(data.frame(a1,b1,c1,d1))
+dtm1 <- CTDM(doc = text1, weighting = "tfidf",EngTermDeleted = FALSE, shortTermDeleted = FALSE)
 }
 \author{
-Jim Liu
+Jim Liu,  Quan Gu
 }
 

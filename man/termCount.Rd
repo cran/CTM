@@ -4,10 +4,15 @@
 \alias{termCount}
 \title{Term Count}
 \usage{
-termCount(doc, shortTermDeleted)
+termCount(doc, EngTermDeleted = TRUE, NumTermDeleted = TRUE,
+  shortTermDeleted = TRUE)
 }
 \arguments{
 \item{doc}{The Chinese text document.}
+
+\item{EngTermDeleted}{remove English from text documents.}
+
+\item{NumTermDeleted}{remove Numbers from text documents.}
 
 \item{shortTermDeleted}{Deltected short word when nchar <2.}
 }
@@ -16,16 +21,16 @@ Computing term count from text documents
 }
 \details{
 This function run a Chinese word segmentation by jiebeR and
-compute term count from these text document.
+compute term count from all these text document.
 }
 \examples{
 library(CTM)
-a <- "hello taiwan"
-b <- "world of tank"
-c <- "taiwan weather"
-d <- "local weather"
-text <- t(data.frame(a,b,c,d))
-count <- termCount(doc = text, shortTermDeleted = FALSE)
+a1 <- "hello taiwan"
+b1 <- "world of tank"
+c1 <- "taiwan weather"
+d1 <- "local weather"
+text1 <- t(data.frame(a1,b1,c1,d1))
+count1 <- termCount(doc = text1, EngTermDeleted=FALSE, shortTermDeleted = FALSE)
 }
 \author{
 Jim Liu
